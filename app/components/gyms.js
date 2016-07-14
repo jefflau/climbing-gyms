@@ -4,57 +4,47 @@ import {
   Text,
   StyleSheet,
   ListView,
+  Image,
   TouchableHighlight
 } from 'react-native';
-
 import { Actions } from 'react-native-router-flux';
-
 import { connect } from 'react-redux';
 
-var gyms = [
-  {
-    name: 'Stone',
-    tags: ['bouldering'],
-    rentsShoes: true,
-    description: "A bouldering gym!"
-  },
-  {
-    name: 'Red Rock',
-    tags: ['bouldering'],
-    rentsShoes: true,
-    description: "A bouldering gym!"
-  }
-]
+import Filters from './filters';
 
-class Main extends React.Component {
+var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+
+class Gyms extends React.Component {
   constructor(props){
     super(props);
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
-    this.state = {
-      gyms: ds.cloneWithRows(gyms)
-    }
   }
 
   goToGym(gym){
-    Actions.gym({title: gym.name})
+    Actions.gym({ gym, title: gym.name })
   }
 
   renderGym(gym){
     return(
-      <View style={styles.gym}>
-        <TouchableHighlight onPress={this.goToGym.bind(this, gym)}>
-          <Text style={styles.gymName}>{gym.name}</Text>
-        </TouchableHighlight>
+      <View style={[styles.gym, styles.gymHeightWidth]}>
+        <Image source={require('../img/stone/1.jpg')}
+        tintColor='white' style={styles.gymHeightWidth}>
+          <TouchableHighlight style={[styles.gymLink]} onPress={this.goToGym.bind(this, gym)}>
+            <Text style={styles.gymName}>{gym.name}</Text>
+          </TouchableHighlight>
+        </Image>
       </View>
     )
   }
 
   render(){
-    console.log(this.props.routes);
+    console.log(this.props);
     return (
       <View style={styles.container}>
-        <ListView style={styles.gymContainer} dataSource={this.state.gyms} renderRow={this.renderGym.bind(this)} />
+        <Filters>
+        </Filters>
+        <ListView contentContainerStyle={styles.gymContainer} dataSource={ds.cloneWithRows(this.props.gyms)} renderRow={this.renderGym.bind(this)} />
       </View>
     )
   }
@@ -65,18 +55,34 @@ const styles = StyleSheet.create({
     flex: 1
   },
   gymContainer: {
-    flexDirection: 'column',
-    marginTop: 64
+    backgroundColor: 'skyblue',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    padding: 7,
+    marginTop: 64,
+    flexWrap: 'wrap'
+  },
+  gymHeightWidth: {
+    width: 160,
+    height: 100
   },
   gym: {
-    flex: 1,
-    justifyContent: 'flex-start',
     backgroundColor: 'blue',
-    padding: 20
+    marginTop: 20,
+    marginHorizontal: 8
+  },
+  gymLink: {
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    padding: 20,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   gymName: {
-
+    color: 'white',
+    fontSize: 22
   }
 });
 
-export default connect(({routes}) => ({routes}))(Main);
+export default connect(({routes, gyms}) => ({routes, gyms}))(Gyms);

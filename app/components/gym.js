@@ -4,15 +4,13 @@ import {
   View,
   StyleSheet
 } from 'react-native';
+import { connect } from 'react-redux';
 
-const Gym = () => {
-  console.log(this.props)
-  return(
-    <View style={styles.container}>
-      <Text>Gym View</Text>
-    </View>
-  )
-}
+const Gym = () => (
+  <View style={styles.container}>
+    <Text>Gym View</Text>
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -20,4 +18,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Gym;
+export default connect(({routes}) => ({routes}))(Gym);
