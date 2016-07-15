@@ -10,29 +10,20 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import getMainImage from '../util/getGymImages';
 
 import Filters from './filters';
 
 var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 class Gym extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      in: true
-    }
-  }
-  componentWillUnMount(){
-    this.setState({
-      in: false
-    })
-  }
+
   render () {
     let { gym, goToGym } = this.props;
     return (
       <View style={[styles.gym, styles.gymHeightWidth]}>
-        <Image source={require('../img/stone/1.jpg')}
-        tintColor='white' style={styles.gymHeightWidth}>
+        <Image source={getMainImage(gym.slug)}
+        tintColor='white' style={styles.gymImage}>
           <TouchableHighlight style={[styles.gymLink]} onPress={goToGym.bind(null, gym)}>
             <Text style={styles.gymName}>{gym.name}</Text>
           </TouchableHighlight>
@@ -82,10 +73,10 @@ class Gyms extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#222',
   },
   gymContainer: {
-    backgroundColor: 'skyblue',
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -96,13 +87,19 @@ const styles = StyleSheet.create({
     width: 160,
     height: 100
   },
+  gymImage: {
+    width: 156,
+    height: 96
+  },
   gym: {
-    backgroundColor: 'blue',
-    marginTop: 20,
+    backgroundColor: 'skyblue',
+    borderColor: 'white',
+    borderWidth: 2,
+    marginBottom: 20,
     marginHorizontal: 8
   },
   gymLink: {
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    backgroundColor: 'rgba(0,0,0,0.3)',
     padding: 20,
     flex: 1,
     justifyContent: 'center',

@@ -30,10 +30,10 @@ class Filters extends React.Component {
     return(
       <View style={styles.container}>
         <TouchableHighlight style={[styles.filter, gymFilter === "SHOW_BOULDERING" ? styles.filterSelected : null]} onPress={this.handlePressFilter.bind(this, 'SHOW_BOULDERING')}>
-          <Text style={styles.filterText}>Bouldering</Text>
+          <Text style={[styles.filterText, gymFilter === "SHOW_BOULDERING" ? styles.filterTextSelected : null]}>Bouldering</Text>
         </TouchableHighlight>
         <TouchableHighlight style={[styles.filter, gymFilter === "SHOW_ROPED" ? styles.filterSelected : null]} onPress={this.handlePressFilter.bind(this, 'SHOW_ROPED')}>
-          <Text style={styles.filterText}>Roped</Text>
+          <Text style={[styles.filterText, gymFilter === "SHOW_ROPED" ? styles.filterTextSelected : null]}>Roped</Text>
         </TouchableHighlight>
       </View>
     )
@@ -72,7 +72,7 @@ let styles = StyleSheet.create({
   },
   filter: {
     backgroundColor: 'transparent',
-    borderColor: 'black',
+    borderColor: 'white',
     borderWidth: 1,
     borderRadius: 5,
     padding: 5,
@@ -82,7 +82,10 @@ let styles = StyleSheet.create({
     borderColor: 'red',
   },
   filterText: {
-    color: 'black'
+    color: 'white'
+  },
+  filterTextSelected: {
+    color: 'red',
   }
 })
 
