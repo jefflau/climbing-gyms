@@ -5,7 +5,8 @@ import {
   StyleSheet,
   ListView,
   Image,
-  TouchableHighlight
+  TouchableHighlight,
+  LayoutAnimation
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -14,6 +15,33 @@ import Filters from './filters';
 
 var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
+class Gym extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      in: true
+    }
+  }
+  componentWillUnMount(){
+    this.setState({
+      in: false
+    })
+  }
+  render () {
+    let { gym, goToGym } = this.props;
+    return (
+      <View style={[styles.gym, styles.gymHeightWidth]}>
+        <Image source={require('../img/stone/1.jpg')}
+        tintColor='white' style={styles.gymHeightWidth}>
+          <TouchableHighlight style={[styles.gymLink]} onPress={goToGym.bind(null, gym)}>
+            <Text style={styles.gymName}>{gym.name}</Text>
+          </TouchableHighlight>
+        </Image>
+      </View>
+    )
+  }
+}
+
 
 class Gyms extends React.Component {
   constructor(props){
@@ -21,20 +49,22 @@ class Gyms extends React.Component {
 
   }
 
+  componentWillMount() {
+    // Animate creation
+    LayoutAnimation.spring();
+  }
+
   goToGym(gym){
     Actions.gym({ gym, title: gym.name })
   }
 
+  onFilter(){
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+  }
+
   renderGym(gym){
     return(
-      <View style={[styles.gym, styles.gymHeightWidth]}>
-        <Image source={require('../img/stone/1.jpg')}
-        tintColor='white' style={styles.gymHeightWidth}>
-          <TouchableHighlight style={[styles.gymLink]} onPress={this.goToGym.bind(this, gym)}>
-            <Text style={styles.gymName}>{gym.name}</Text>
-          </TouchableHighlight>
-        </Image>
-      </View>
+      <Gym gym={gym} goToGym={this.goToGym}/>
     )
   }
 
@@ -42,7 +72,7 @@ class Gyms extends React.Component {
     console.log(this.props);
     return (
       <View style={styles.container}>
-        <Filters>
+        <Filters onFilter={this.onFilter}>
         </Filters>
         <ListView contentContainerStyle={styles.gymContainer} dataSource={ds.cloneWithRows(this.props.gyms)} renderRow={this.renderGym.bind(this)} />
       </View>
@@ -60,7 +90,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     padding: 7,
-    marginTop: 64,
     flexWrap: 'wrap'
   },
   gymHeightWidth: {

@@ -7,19 +7,38 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-const Filters = ({ filterBouldering, filterRoped, filterAll }) => (
-  <View style={styles.container}>
-    <TouchableHighlight style={styles.filter} onPress={filterBouldering}>
-      <Text style={styles.filterText}>Show Bouldering</Text>
-    </TouchableHighlight>
-    <TouchableHighlight style={styles.filter} onPress={filterRoped}>
-      <Text style={styles.filterText}>Show Roped</Text>
-    </TouchableHighlight>
-    <TouchableHighlight style={styles.filter} onPress={filterAll}>
-      <Text style={styles.filterText}>Show All</Text>
-    </TouchableHighlight>
-  </View>
-) ;
+class Filters extends React.Component {
+  handlePressFilter (type) {
+    let { filterBouldering, filterRoped, filterAll, onFilter } = this.props;
+
+    switch(type){
+      case this.props.gymFilter:
+        filterAll();
+        break;
+      case 'SHOW_BOULDERING':
+        filterBouldering();
+        break;
+      case 'SHOW_ROPED':
+        filterRoped();
+        break;
+    }
+
+    onFilter();
+  }
+  render() {
+    let { filterBouldering, filterRoped, filterAll, onFilter } = this.props;
+    return(
+      <View style={styles.container}>
+        <TouchableHighlight style={styles.filter} onPress={this.handlePressFilter.bind(this, 'SHOW_BOULDERING')}>
+          <Text style={styles.filterText}>Show Bouldering</Text>
+        </TouchableHighlight>
+        <TouchableHighlight style={styles.filter} onPress={this.handlePressFilter.bind(this, 'SHOW_ROPED')}>
+          <Text style={styles.filterText}>Show Roped</Text>
+        </TouchableHighlight>
+      </View>
+    )
+  } ;
+}
 
 const mapDispatchToProps = (dispatch) => ({
   filterBouldering(){
@@ -27,27 +46,33 @@ const mapDispatchToProps = (dispatch) => ({
       type: 'SHOW_BOULDERING'
     })
   },
-  filterRoped(){
+  filterRoped(onFilter){
     dispatch({
       type: 'SHOW_ROPED'
     })
   },
-  filterAll(){
+  filterAll(onFilter){
     dispatch({
       type: 'SHOW_ALL'
     })
   }
 })
 
+const mapStateToProps = ({gyms, gymFilter}) => ({
+  gyms,
+  gymFilter
+});
+
 let styles = StyleSheet.create({
   container: {
-    marginTop: 65
+    marginTop: 64
   },
   filter: {
+    backgroundColor: 'blue'
   },
   filterText: {
     color: 'black'
   }
 })
 
-export default connect(({gyms}) => ({gyms}), mapDispatchToProps)(Filters);
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);
