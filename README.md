@@ -22,7 +22,7 @@ Alternatively after the `npm install`, open the xcode project in ios > climbTaiw
 
 ###Todo
 
-[] Add map to each Gym using address
-[] Add tab navigation to show gym
-[] Show Information in a more user friendly way
-[] Add Chinese language localisation switch
+- [] Add map to each Gym using address
+- [] Add tab navigation to show gym
+- [] Show Information in a more user friendly way
+- [] Add Chinese language localisation switch
