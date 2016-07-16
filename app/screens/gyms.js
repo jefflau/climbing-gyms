@@ -10,22 +10,24 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import getMainImage from '../util/getGymImages';
 
-import Filters from './filters';
+import Filters from '../components/filters';
+import ViewContainer from '../components/viewContainer';
 
 var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 class Gym extends React.Component {
 
   render () {
-    let { gym, goToGym } = this.props;
+    let { gym, gym: { name, slug }, goToGym } = this.props;
     return (
       <View style={[styles.gym, styles.gymHeightWidth]}>
-        <Image source={getMainImage(gym.slug)}
+        <Image source={getMainImage(slug)}
         tintColor='white' style={styles.gymImage}>
           <TouchableHighlight style={[styles.gymLink]} onPress={goToGym.bind(null, gym)}>
-            <Text style={styles.gymName}>{gym.name}</Text>
+            <Text style={styles.gymName}>{_.upperCase(name)}</Text>
           </TouchableHighlight>
         </Image>
       </View>
@@ -62,20 +64,16 @@ class Gyms extends React.Component {
   render(){
     console.log(this.props);
     return (
-      <View style={styles.container}>
+      <ViewContainer>
         <Filters onFilter={this.onFilter}>
         </Filters>
         <ListView contentContainerStyle={styles.gymContainer} dataSource={ds.cloneWithRows(this.props.gyms)} renderRow={this.renderGym.bind(this)} />
-      </View>
+      </ViewContainer>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#222',
-  },
   gymContainer: {
     flex: 1,
     flexDirection: 'row',

@@ -5,8 +5,8 @@ import {
 } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-import Gyms from './components/gyms';
-import Gym from './components/gym';
+import Gyms from './screens/gyms';
+import Gym from './screens/gym';
 
 
 const RouterWithRedux = connect()(Router);

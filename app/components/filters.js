@@ -65,7 +65,6 @@ const mapStateToProps = ({gyms, gymFilter}) => ({
 
 let styles = StyleSheet.create({
   container: {
-    marginTop: 64,
     padding: 10,
     justifyContent: 'center',
     flexDirection: 'row'
