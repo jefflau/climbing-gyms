@@ -4,7 +4,7 @@ import {
   Text,
   View,
   StyleSheet,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import { connect } from 'react-redux';
 import getMainImage from '../util/getGymImages';
