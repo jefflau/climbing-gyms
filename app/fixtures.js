@@ -6,7 +6,10 @@ export const gyms = [
     tags: ['bouldering'],
     mainImage: '/app/img/stone/main.jpg',
     rentsShoes: true,
-    description: "A bouldering gym!",
+    description: "A bouldering gym! 5 metre high walls, with all different variations of walls. Lots of different types of holds and good routesetting makes this a prime place to go bouldering in Taiwan.",
+    address: '新北市新莊區三和路58-12號',
+    facebook: 'https://www.facebook.com/StoneBoulderingGym/',
+    openingTimes: "Mon-Fri:1900-2300,Sat:1100-2100,Sun:1100-1900",
     belayCardRequired: null
   },
   {
@@ -16,7 +19,10 @@ export const gyms = [
     mainImage: '/app/img/stone/main.jpg',
     rentsShoes: true,
     description: "A bouldering gym!",
-    belayCardRequired: null
+    address: '承德路四段261號B1',
+    facebook: 'https://www.facebook.com/redrocktaiwan/?fref=ts',
+    openingTimes: 'Mon-Fri:1600-2230,Sat-Sun:0900-2100',
+    belayCardRequired: null,
   },
   {
     name: 'Y17',
@@ -25,15 +31,23 @@ export const gyms = [
     mainImage: '/app/img/stone/main.jpg',
     rentsShoes: true,
     description: "A Roped gym!",
-    belayCardRequired: true
+    address: '台北市仁愛路一段17號',
+    facebook: 'https://www.facebook.com/groups/212551538862289/',
+    openingTimes: 'Mon-Sun:0900-2130',
+    openingTimesExtra: 'Sessions split up into 3 periods. 9:00-12:00, 13:30-17:00, 18:00-21:30',
+    belayCardRequired: true,
   },
   {
     name: 'Xin Yi',
     slug: 'xinyi',
     tags: ['bouldering'],
     mainImage: '/app/img/stone/main.jpg',
-    rentsShoes: true,
-    description: "High balls, but routesetting has been lacking and not a lot of different holds",
+    rentsShoes: false,
+    description: "High walls, but routesetting has been lacking and not a lot of different holds",
+    address: '',
+    openingTimes: 'Mon-Sun:1400-2200',
+    openingTimesExtra: 'Closes for an hour from 17:00-18:00',
+    facebook: 'https://www.facebook.com/boulderinggym.xinyi/',
     belayCardRequired: null
   },
   {
@@ -43,15 +57,21 @@ export const gyms = [
     mainImage: '/app/img/stone/main.jpg',
     rentsShoes: true,
     description: "Great space, but lack of management",
-    belayCardRequired: null
+    address: '南港區市民大道8段552號',
+    facebook: 'https://www.facebook.com/CivicBouldergymTaipei/',
+    openingTimes: 'Mon-Fri:1000-2200,Sat-Sun:1000-1800',
+    belayCardRequired: null,
   },
   {
     name: 'Neihu',
     slug: 'neihu',
     tags: ['top roping', 'roped', 'lead'],
     mainImage: '/app/img/stone/main.jpg',
-    rentsShoes: true,
+    rent: ['shoes', 'harness'],
+    openingTimes: 'Mon-Sun:0900-2200',
     description: "Great overhang",
+    address: '台北市內湖區洲子街12號',
+    facebook: 'https://www.facebook.com/climbing.nh/',
     belayCardRequired: true
   }
 ];
