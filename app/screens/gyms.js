@@ -101,12 +101,11 @@ const styles = StyleSheet.create({
     padding: 20,
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   gymName: {
     color: 'white',
     fontSize: 22
   }
 });
-
 export default connect(({routes, gyms}) => ({routes, gyms}))(Gyms);
