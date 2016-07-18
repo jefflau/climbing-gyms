@@ -9,9 +9,9 @@ export const gyms = [
     description: "A bouldering gym! 5 metre high walls, with all different variations of walls. Lots of different types of holds and good routesetting makes this a prime place to go bouldering in Taiwan.",
     address: '新北市新莊區三和路58-12號',
     location: {
-      lat: 25.03901,
-      long: 121.43757
-    }
+      latitude: 25.03901,
+      longitude: 121.43757
+    },
     facebook: 'https://www.facebook.com/StoneBoulderingGym/',
     openingTimes: "Mon-Fri:1900-2300,Sat:1100-2100,Sun:1100-1900",
     belayCardRequired: null
@@ -25,8 +25,8 @@ export const gyms = [
     description: "A bouldering gym!",
     address: '承德路四段261號B1',
     location: {
-      lat: 25.08963,
-      long: 121.52058c
+      latitude: 25.08963,
+      longitude: 121.52058
     },
     facebook: 'https://www.facebook.com/redrocktaiwan/?fref=ts',
     openingTimes: 'Mon-Fri:1600-2230,Sat-Sun:0900-2100',
@@ -41,8 +41,8 @@ export const gyms = [
     description: "A Roped gym!",
     address: '台北市仁愛路一段17號',
     location: {
-      lat: 25.03906,
-      long: 121.52200
+      latitude: 25.03906,
+      longitude: 121.52200
     },
     facebook: 'https://www.facebook.com/groups/212551538862289/',
     openingTimes: 'Mon-Sun:0900-2130',
@@ -58,9 +58,9 @@ export const gyms = [
     description: "High walls, but routesetting has been lacking and not a lot of different holds",
     address: '110 台北市信義區松勤街100號 7F',
     location: {
-      lat:25.03187,
-      long:121.56668
-    }
+      latitude:25.03187,
+      longitude:121.56668
+    },
     openingTimes: 'Mon-Sun:1400-2200',
     openingTimesExtra: 'Closes for an hour from 17:00-18:00',
     facebook: 'https://www.facebook.com/boulderinggym.xinyi/',
@@ -75,8 +75,8 @@ export const gyms = [
     description: "Great space, but lack of management",
     address: '南港區市民大道8段552號',
     location: {
-      lat: 25.05392,
-      long: 121.61385
+      latitude: 25.05392,
+      longitude: 121.61385
     },
     facebook: 'https://www.facebook.com/CivicBouldergymTaipei/',
     openingTimes: 'Mon-Fri:1000-2200,Sat-Sun:1000-1800',
@@ -92,8 +92,8 @@ export const gyms = [
     description: "Great overhang",
     address: '台北市內湖區洲子街12號',
     location: {
-      lat: 25.07827,
-      long: 121.57523
+      latitude: 25.07827,
+      longitude: 121.57523
     },
     facebook: 'https://www.facebook.com/climbing.nh/',
     belayCardRequired: true
