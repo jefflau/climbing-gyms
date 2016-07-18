@@ -50,10 +50,10 @@ class Gym extends React.Component{
         <Image source={getMainImage(gym.slug)} style={styles.mainImage}/>
         <View style={styles.mainContent}>
           <View style={styles.tabs}>
-            <TouchableOpacity style={styles.tab} onPress={()=> this.setState({tab: 'info'})}>
+            <TouchableOpacity style={[styles.tab, this.state.tab === 'info' ? styles.tabSelected: '']} onPress={()=> this.setState({tab: 'info'})}>
               <Text style={styles.tabText}>Info</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.tab} onPress={()=> this.setState({tab: 'map'})}>
+            <TouchableOpacity style={[styles.tab, this.state.tab === 'map'? styles.tabSelected: '']} onPress={()=> this.setState({tab: 'map'})}>
               <Text style={styles.tabText}>Map</Text>
             </TouchableOpacity>
           </View>
@@ -81,6 +81,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 10,
+  },
+  tabSelected: {
+    backgroundColor: 'red'
   },
   tabText: {
     textAlign: 'center'
