@@ -6,11 +6,14 @@ import {
   ListView,
   Image,
   TouchableHighlight,
-  LayoutAnimation
+  LayoutAnimation,
+  Dimensions
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+const { height, width } = Dimensions.get('window');
+
 import getMainImage from '../util/getGymImages';
 
 import Filters from '../components/filters';
@@ -73,6 +76,12 @@ class Gyms extends React.Component {
   }
 }
 
+let borderWidth = 2;
+let gymWidth = width/2 - 25;
+let gymHeight = gymWidth * 0.6;
+let gymImageWidth = gymWidth - borderWidth*2;
+let gymImageHeight = gymHeight - borderWidth*2;
+
 const styles = StyleSheet.create({
   gymContainer: {
     flex: 1,
@@ -82,18 +91,18 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap'
   },
   gymHeightWidth: {
-    width: 160,
-    height: 100
+    width: gymWidth,
+    height: gymHeight
   },
   gymImage: {
-    width: 156,
-    height: 96
+    width: gymImageWidth,
+    height: gymImageHeight
   },
   gym: {
     backgroundColor: 'skyblue',
     borderColor: 'white',
-    borderWidth: 2,
-    marginBottom: 20,
+    borderWidth: borderWidth,
+    marginBottom: 18,
     marginHorizontal: 8
   },
   gymLink: {
