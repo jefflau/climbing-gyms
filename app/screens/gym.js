@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   mainContent: {
   },
   tabs: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   tab: {
     backgroundColor: 'white',

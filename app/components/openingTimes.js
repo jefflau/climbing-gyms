@@ -8,6 +8,32 @@ import {
 
 import { parseOpeningTimes } from '../util/util';
 
+import LocalizedStrings from 'react-native-localization';
+
+// CommonJS syntax
+// let LocalizedStrings  = require ('react-native-localization');
+
+let days = new LocalizedStrings({
+  en:{
+    mon: 'Monday',
+    tue: 'Tuesday',
+    wed: 'Wednesday',
+    thu: 'Thursday',
+    fri: 'Friday',
+    sat: 'Saturday',
+    sun: 'Sunday'
+  },
+  'zh-Hant': {
+    mon: '週一:',
+    tue: '週二',
+    wed: '週三',
+    thu: '週四',
+    fri: '週五',
+    sat: '週六',
+    sun: '週日'
+  }
+});
+
 const OpeningTimes = ({ data }) => {
   data = parseOpeningTimes(data);
   var times = _.map(data, function(val, key){
@@ -16,25 +42,25 @@ const OpeningTimes = ({ data }) => {
 
     switch (key) {
       case "sun":
-        day = "Sunday:";
+        day = days.sun + ':';
         break;
       case "mon":
-        day = "Monday:";
+        day = days.mon + ':';
         break;
       case "tue":
-        day = "Tuesday:";
+        day = days.tue + ':';
         break;
       case "wed":
-        day = "Wednesday:";
+        day = days.wed + ':';
         break;
       case "thu":
-        day = "Thursday:";
+        day = days.thu + ':';
         break;
       case "fri":
-        day = "Friday:";
+        day = days.fri + ':';
         break;
       case "sat":
-        day = "Saturday:";
+        day = days.sat + ':';
         break;
     }
 
