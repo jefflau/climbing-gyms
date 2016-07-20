@@ -1,5 +1,6 @@
+import Immutable from 'immutable'
 
-export const gyms = [
+const gymsFixtures = [
   {
     name: 'Stone',
     slug: 'stone',
@@ -99,3 +100,5 @@ export const gyms = [
     belayCardRequired: true
   }
 ];
+
+export const gyms = Immutable.fromJS(gymsFixtures);

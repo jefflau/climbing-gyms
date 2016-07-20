@@ -29,25 +29,28 @@ class Gym extends React.Component{
     let info = this.state.tab === 'info' ?
       (
         <View>
-          <Text style={styles.description}>{gym.description}</Text>
-          <OpeningTimes data={gym.openingTimes} />
+          <Text style={styles.description}>{gym.get('description')}</Text>
+          <OpeningTimes data={gym.get('openingTimes')} />
         </View>
       )
       : null
+
+    console.log(gym.getIn(['location', 'longitude']), gym.getIn(['location', 'latitude']))
     let map = this.state.tab === 'map' ?
       <MapView
         style={styles.map}
         region={{
-          ...gym.location,
+          longitude: gym.getIn(['location', 'longitude']),
+          latitude: gym.getIn(['location', 'latitude']),
           longitudeDelta: 0.015,
           latitudeDelta: 0.015
         }}
-        annotations={[gym.location]}
+        annotations={[gym.get('location').toObject()]}
       />
       : null;
     return(
       <ViewContainer style={styles.container}>
-        <Image source={getMainImage(gym.slug)} style={styles.mainImage}/>
+        <Image source={getMainImage(gym.get('slug'))} style={styles.mainImage}/>
         <View style={styles.mainContent}>
           <View style={styles.tabs}>
             <TouchableOpacity style={[styles.tab, this.state.tab === 'info' ? styles.tabSelected: '']} onPress={()=> this.setState({tab: 'info'})}>

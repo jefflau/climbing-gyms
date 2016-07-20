@@ -9,6 +9,7 @@ import {
   LayoutAnimation,
   Dimensions
 } from 'react-native';
+import Immutable from 'immutable';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -24,13 +25,13 @@ var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 class Gym extends React.Component {
 
   render () {
-    let { gym, gym: { name, slug }, goToGym } = this.props;
+    let { gym, goToGym } = this.props;
     return (
       <View style={[styles.gym, styles.gymHeightWidth]}>
-        <Image source={getMainImage(slug)}
+        <Image source={getMainImage(gym.get('slug'))}
         tintColor='white' style={styles.gymImage}>
           <TouchableHighlight style={[styles.gymLink]} onPress={goToGym.bind(null, gym)}>
-            <Text style={styles.gymName}>{_.upperCase(name)}</Text>
+            <Text style={styles.gymName}>{_.upperCase(gym.get('name'))}</Text>
           </TouchableHighlight>
         </Image>
       </View>
@@ -65,12 +66,11 @@ class Gyms extends React.Component {
   }
 
   render(){
-    console.log(this.props);
     return (
       <ViewContainer>
         <Filters onFilter={this.onFilter}>
         </Filters>
-        <ListView contentContainerStyle={styles.gymContainer} dataSource={ds.cloneWithRows(this.props.gyms)} renderRow={this.renderGym.bind(this)} />
+        <ListView contentContainerStyle={styles.gymContainer} dataSource={ds.cloneWithRows(this.props.gyms.toArray())} renderRow={this.renderGym.bind(this)} />
       </ViewContainer>
     )
   }
