@@ -14,7 +14,7 @@ import { parseOpeningTimes } from '../util/util';
 
 import ViewContainer from '../components/viewContainer';
 import OpeningTimes from '../components/openingTimes';
-
+import { colours } from '../styles/globals';
 const { height, width } = Dimensions.get('window');
 
 class Gym extends React.Component{
@@ -54,10 +54,10 @@ class Gym extends React.Component{
         <View style={styles.mainContent}>
           <View style={styles.tabs}>
             <TouchableOpacity style={[styles.tab, this.state.tab === 'info' ? styles.tabSelected: '']} onPress={()=> this.setState({tab: 'info'})}>
-              <Text style={styles.tabText}>Info</Text>
+              <Text style={[styles.tabText, this.state.tab ==='info' ? styles.tabTextSelected : '']}>Info</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.tab, this.state.tab === 'map'? styles.tabSelected: '']} onPress={()=> this.setState({tab: 'map'})}>
-              <Text style={styles.tabText}>Map</Text>
+              <Text style={[styles.tabText, this.state.tab ==='map' ? styles.tabTextSelected : '']}>Map</Text>
             </TouchableOpacity>
           </View>
 
@@ -80,16 +80,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   tab: {
-    backgroundColor: 'white',
+    backgroundColor: colours.darkestGrey,
     flex: 1,
     justifyContent: 'center',
     padding: 10,
   },
   tabSelected: {
-    backgroundColor: 'red'
+    backgroundColor: 'white'
   },
   tabText: {
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
+  },
+  tabTextSelected: {
+    color: 'black',
   },
   description: {
     color: 'white',
