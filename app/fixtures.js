@@ -14,7 +14,7 @@ const gymsFixtures = [
       longitude: 121.43757
     },
     facebook: 'https://www.facebook.com/StoneBoulderingGym/',
-    openingTimes: "Mon-Fri:1900-2300,Sat:1100-2100,Sun:1100-1900",
+    openingTimes: "Mon-Fri:0900-2300,Sat:1100-2100,Sun:1100-1900",
     belayCardRequired: null
   },
   {

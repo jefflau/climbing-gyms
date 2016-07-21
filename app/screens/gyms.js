@@ -52,7 +52,7 @@ class Gyms extends React.Component {
   }
 
   goToGym(gym){
-    Actions.gym({ gym, title: gym.name })
+    Actions.gym({ gym, title: gym.get('name') })
   }
 
   onFilter(){
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderWidth: borderWidth,
     marginBottom: 18,
-    marginHorizontal: 8
+    marginHorizontal: 8,
   },
   gymLink: {
     backgroundColor: 'rgba(0,0,0,0.3)',
@@ -114,7 +114,8 @@ const styles = StyleSheet.create({
   },
   gymName: {
     color: 'white',
-    fontSize: 22
+    fontSize: 16,
+    fontWeight: 'bold',
   }
 });
 export default connect(({routes, gyms}) => ({routes, gyms}))(Gyms);

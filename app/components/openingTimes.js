@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import moment from 'moment';
 import {
   View,
   Text,
@@ -10,8 +11,6 @@ import { parseOpeningTimes } from '../util/util';
 
 import LocalizedStrings from 'react-native-localization';
 
-// CommonJS syntax
-// let LocalizedStrings  = require ('react-native-localization');
 
 let days = new LocalizedStrings({
   en:{
@@ -34,8 +33,11 @@ let days = new LocalizedStrings({
   }
 });
 
+const formatTime = (time) => moment(time, 'HHmm').format('HH:mm');
+
 const OpeningTimes = ({ data }) => {
   data = parseOpeningTimes(data);
+
   var times = _.map(data, function(val, key){
     let day;
     let time;
@@ -65,13 +67,13 @@ const OpeningTimes = ({ data }) => {
     }
 
     if(data[key]) {
-      time = <Text style={styles.time}>{data[key].from} - {data[key].to}</Text>
+      time = <Text style={styles.time}>{formatTime(data[key].from)} - {formatTime(data[key].to)}</Text>
     } else {
       time = <Text style={styles.time}>Closed</Text>
     }
 
     return (
-      <View key={key}>
+      <View key={key} style={styles.row}>
         <Text style={styles.day}>{day}</Text>
         {time}
       </View>
@@ -87,12 +89,18 @@ const OpeningTimes = ({ data }) => {
 
 const styles = StyleSheet.create({
   container: {
+    padding: 10,
+  },
+  row: {
+    flexDirection: 'row'
   },
   day: {
-    color: 'white'
+    flex: 1,
+    color: 'white',
   },
   time: {
-    color: 'white'
+    flex: 1,
+    color: 'white',
   }
 })
 
