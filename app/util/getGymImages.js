@@ -12,5 +12,7 @@ export default function getMainImage(gym){
       return require('../img/y17/main.jpg')
     case 'xinyi':
       return require('../img/xinyi/main.jpg')
+    case 'bonus':
+      return require('../img/bonus/main.jpg')
   }
 }

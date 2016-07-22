@@ -3,13 +3,14 @@ import { StyleSheet } from 'react-native';
 import {
   Router,
   Scene,
+  WebView
 } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { colours } from './styles/globals';
 
 import Gyms from './screens/gyms';
 import Gym from './screens/gym';
-
+import GoogleMaps from './screens/googleMaps';
 
 const RouterWithRedux = connect()(Router);
 
@@ -22,6 +23,7 @@ const Routes = () => (
   >
     <Scene key="gyms" title="Gyms" component={Gyms} initial={true}/>
     <Scene key="gym" component={Gym} />
+    <Scene key="googleMaps" component={GoogleMaps} />
   </RouterWithRedux>
 );
 

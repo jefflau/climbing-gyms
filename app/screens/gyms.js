@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   gymContainer: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     padding: 7,
     flexWrap: 'wrap'
   },

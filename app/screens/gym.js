@@ -9,6 +9,8 @@ import {
   MapView
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+
 import getMainImage from '../util/getGymImages';
 import { parseOpeningTimes } from '../util/util';
 
@@ -37,18 +39,23 @@ class Gym extends React.Component{
 
     console.log(gym.getIn(['location', 'longitude']), gym.getIn(['location', 'latitude']))
     let map = this.state.tab === 'map' ?
-      <MapView
-        style={styles.map}
-        region={{
-          longitude: gym.getIn(['location', 'longitude']),
-          latitude: gym.getIn(['location', 'latitude']),
-          longitudeDelta: 0.015,
-          latitudeDelta: 0.015
-        }}
-        annotations={[gym.get('location').toObject()]}
-      />
+      <View style={styles.mapContainer}>
+        <MapView
+          style={styles.map}
+          region={{
+            longitude: gym.getIn(['location', 'longitude']),
+            latitude: gym.getIn(['location', 'latitude']),
+            longitudeDelta: 0.015,
+            latitudeDelta: 0.015
+          }}
+          annotations={[gym.get('location').toObject()]}
+        />
+        <TouchableOpacity style={styles.googleLink} onPress={()=> Actions.googleMaps({address: gym.get('address'), title: "Google Maps"})}>
+          <Text style={styles.googleLinkText}>Link to Google</Text>
+        </TouchableOpacity>
+      </View>
       : null;
-    return(
+    return (
       <ViewContainer style={styles.container}>
         <Image source={getMainImage(gym.get('slug'))} style={styles.mainImage}/>
         <View style={styles.mainContent}>
@@ -69,6 +76,8 @@ class Gym extends React.Component{
   }
 }
 
+let mapHeight = (height/3 * 2) - 50 - 64; // 66% of window height - tabHeight - statusBar Height
+
 const styles = StyleSheet.create({
   mainImage: {
     width: width,
@@ -84,6 +93,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 10,
+    height: 40,
   },
   tabSelected: {
     backgroundColor: 'white'
@@ -104,9 +114,22 @@ const styles = StyleSheet.create({
     padding: 10
   },
   map: {
-    height: 400,
+    height: mapHeight
     width: width
-  }
+  },
+  mapContainer: {
+
+  },
+  googleLink: {
+    backgroundColor: 'black',
+    padding: 10,
+    position: 'absolute',
+    bottom: 0,
+    right: 0
+  },
+  googleLinkText: {
+    color: 'white'
+  },
 });
 
 export default connect(({routes}) => ({routes}))(Gym);
