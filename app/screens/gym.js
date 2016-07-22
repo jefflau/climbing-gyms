@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     padding: 10
   },
   map: {
-    height: mapHeight
+    height: mapHeight,
     width: width
   },
   mapContainer: {
