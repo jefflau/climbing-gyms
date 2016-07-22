@@ -4,13 +4,15 @@ import gyms from './gymsReducer';
 import gymTypeFilter from './gymTypeFilterReducer';
 import locationFilter from './locationFilterReducer';
 import navPopup from './navPopupReducer';
+import cities from './citiesReducer';
 
 const rootReducer = combineReducers({
   routes,
   gyms,
   gymTypeFilter,
   locationFilter,
-  navPopup
+  navPopup,
+  cities
 })
 
 export default rootReducer;

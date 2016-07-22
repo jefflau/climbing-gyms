@@ -115,7 +115,7 @@ const gymsFixtures = [
     openingTimesExtra: "Saturday and Friday are for climbers and needs advance booking",
     description: "Small, but cosy bouldering gym located close to Hua Lien station. It also doubles as a hostel for climbers, with 4 double bedrooms",
     address: '花蓮市國民一街38號3F',
-    city: 'taipei',
+    city: 'hualien',
     location: {
       latitude: 25.07827,
       longitude: 121.57523

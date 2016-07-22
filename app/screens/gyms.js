@@ -20,53 +20,20 @@ import getMainImage from '../util/getGymImages';
 
 import Filters from '../components/filters';
 import ViewContainer from '../components/viewContainer';
+import CitySelect from '../components/citySelect';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
-class Gym extends React.Component {
-
-  render () {
-    let { gym, goToGym } = this.props;
-    return (
-      <View style={[styles.gym, styles.gymHeightWidth]}>
-        <Image source={getMainImage(gym.get('slug'))}
-        tintColor='white' style={styles.gymImage}>
-          <TouchableHighlight style={[styles.gymLink]} onPress={goToGym.bind(null, gym)}>
-            <Text style={styles.gymName}>{_.upperCase(gym.get('name'))}</Text>
-          </TouchableHighlight>
-        </Image>
-      </View>
-    )
-  }
-}
-
-class CitySelect extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      selected: ''
-    }
-  }
-  onValueChange(key, value) {
-    const newState = {};
-    newState[key] = value;
-    this.setState(newState);
-  }
-  render() {
-    let citySelections = cities.map(city => (
-      <Picker.Item label={_.capitalize(city)} value={city} />
-    ))
-    return (
-      <Picker
-        style={styles.citySelect}
-        selectedValue={this.state.selected}
-        onValueChange={this.onValueChange.bind(this, 'selected')}>
-        <Picker.Item label='All' value='' />
-        {citySelections}
-      </Picker>
-    )
-  }
-}
+const Gym = ({ gym, goToGym }) =>  (
+  <View style={[styles.gym, styles.gymHeightWidth]}>
+    <Image source={getMainImage(gym.get('slug'))}
+    tintColor='white' style={styles.gymImage}>
+      <TouchableHighlight style={[styles.gymLink]} onPress={goToGym.bind(null, gym)}>
+        <Text style={styles.gymName}>{_.upperCase(gym.get('name'))}</Text>
+      </TouchableHighlight>
+    </Image>
+  </View>
+)
 
 
 class Gyms extends React.Component {
@@ -84,7 +51,7 @@ class Gyms extends React.Component {
     Actions.gym({ gym, title: gym.get('name') })
   }
 
-  onFilter(){
+  filterAnimationSetup(){
     LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
   }
 
@@ -95,19 +62,22 @@ class Gyms extends React.Component {
   }
 
   citySelect(navPopup, cities){
-    if(navPopup === 'OPEN_CITY_SELECT') {
-      return <CitySelect cities={cities} />
+    console.log('select city', this.props)
+    if(navPopup === 'TOGGLE_CITY_SELECT') {
+      return <CitySelect filterAnimationSetup={this.filterAnimationSetup} cities={cities} locationFilter={this.props.locationFilter}/>
+    } else {
+      return null;
     }
   }
 
   render(){
-    let {navPopup, gyms} = this.props;
+    let { navPopup, gyms, cities } = this.props;
     return (
       <ViewContainer>
-        <Filters onFilter={this.onFilter}>
+        <Filters filterAnimationSetup={this.filterAnimationSetup}>
         </Filters>
-        <ListView contentContainerStyle={styles.gymContainer} dataSource={ds.cloneWithRows(gyms.toArray())} renderRow={this.renderGym.bind(this)} />
-        {this.citySelect(navPopup)}
+         <ListView contentContainerStyle={styles.gymContainer} dataSource={ds.cloneWithRows(gyms.toArray())} renderRow={this.renderGym.bind(this)} />
+         {this.citySelect(navPopup, cities)}
       </ViewContainer>
     )
   }
@@ -124,9 +94,13 @@ const filterGymsByType = (gyms, gymTypeFilter) => {
   }
 }
 
-const filterGymsByLocation = (gyms, location) => {
-  if(location) return gyms.filter(gym => gym.get('location') === location)
-  return gyms;
+const filterGymsByLocation = (gyms, locationFilter) => {
+  switch(locationFilter){
+    case 'all':
+      return gyms;
+    default:
+      return gyms.filter(gym => gym.get('city') === locationFilter)
+  }
 }
 
 const filterGyms = (gyms, gymTypeFilter, locationFilter) => {
@@ -144,6 +118,7 @@ const mapStateToProps = ({
   routes,
   gyms: filterGyms(gyms, gymTypeFilter, locationFilter),
   navPopup,
+  locationFilter,
   cities
 })
 
@@ -188,11 +163,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  citySelect: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0
-  }
 });
 
 export default connect(mapStateToProps)(Gyms);

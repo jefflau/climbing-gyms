@@ -13,7 +13,7 @@ import Gyms from './screens/gyms';
 import Gym from './screens/gym';
 import GoogleMaps from './screens/googleMaps';
 
-import { openCitySelect } from './actions/actions';
+import { toggleCitySelect } from './actions/actions';
 
 const Routes = ({ dispatch}) => (
   <Router
@@ -27,7 +27,8 @@ const Routes = ({ dispatch}) => (
       component={Gyms}
       initial={true}
       rightTitle={'City'}
-      onRight={()=> dispatch(openCitySelect())}
+      rightButtonTextStyle={styles.rightButton}
+      onRight={()=> dispatch(toggleCitySelect())}
     />
     <Scene key="gym" component={Gym} />
     <Scene key="googleMaps" component={GoogleMaps} />
@@ -43,6 +44,9 @@ const styles = StyleSheet.create({
   },
   leftButton: {
     tintColor: 'white'
+  },
+  rightButton: {
+    color: 'white'
   }
 })
 

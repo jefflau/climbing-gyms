@@ -10,7 +10,7 @@ import { showBouldering, showRoped, showAll} from '../actions/actions';
 
 class Filters extends React.Component {
   handlePressFilter (type) {
-    let { filterBouldering, filterRoped, filterAll, onFilter, gymTypeFilter } = this.props;
+    let { filterBouldering, filterRoped, filterAll, filterAnimationSetup, gymTypeFilter } = this.props;
 
     switch(type){
       case gymTypeFilter:
@@ -24,7 +24,7 @@ class Filters extends React.Component {
         break;
     }
 
-    onFilter();
+    filterAnimationSetup();
   }
   render() {
     let { filterBouldering, filterRoped, filterAll, onFilter, gymTypeFilter } = this.props;

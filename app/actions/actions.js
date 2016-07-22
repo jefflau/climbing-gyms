@@ -3,8 +3,12 @@ export const filterCity = (city) => ({
   city
 })
 
-export const openCitySelect = (city) => ({
-  type: 'OPEN_CITY_SELECT'
+export const toggleCitySelect = (city) => ({
+  type: 'TOGGLE_CITY_SELECT'
+})
+
+export const closeNavPopups = () => ({
+  type: 'CLOSE_NAV_POPUPS'
 })
 
 export const showBouldering = () => ({
