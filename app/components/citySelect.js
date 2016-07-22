@@ -23,10 +23,11 @@ class CitySelect extends React.Component {
   onValueChange(key, value) {
     const newState = {};
     newState[key] = value;
-    this.setState(newState);
-    this.props.dispatch(filterCity(value));
-    this.props.dispatch(closeNavPopups())
-    this.props.filterAnimationSetup();
+    this.setState(newState, ()=>{
+      this.props.dispatch(filterCity(value));
+      this.props.dispatch(closeNavPopups())
+      this.props.filterAnimationSetup();
+    });
   }
   render() {
     let { cities } = this.props;
