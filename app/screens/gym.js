@@ -37,7 +37,6 @@ class Gym extends React.Component{
       )
       : null
 
-    console.log(gym.getIn(['location', 'longitude']), gym.getIn(['location', 'latitude']))
     let map = this.state.tab === 'map' ?
       <View style={styles.mapContainer}>
         <MapView
@@ -75,13 +74,15 @@ class Gym extends React.Component{
     )
   }
 }
-
-let mapHeight = (height/3 * 2) - 50 - 64; // 66% of window height - tabHeight - statusBar Height
+const statusBarHeight = 64,
+      tabHeight = 40,
+      mainImageHeight = height/3,
+      mapHeight = height/3 * 2 - tabHeight - statusBarHeight;
 
 const styles = StyleSheet.create({
   mainImage: {
     width: width,
-    height: height/3
+    height: mainImageHeight
   },
   mainContent: {
   },
