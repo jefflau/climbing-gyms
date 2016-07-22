@@ -20,7 +20,23 @@ import getMainImage from '../util/getGymImages';
 import Filters from '../components/filters';
 import ViewContainer from '../components/viewContainer';
 
-var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+const filterGymsByType = (gyms, type) => {
+  switch(type){
+    case 'SHOW_BOULDERING':
+      return gyms.filter(gym => gym.get('tags').includes('bouldering'))
+    case 'SHOW_ROPED':
+      return gyms.filter(gym => gym.get('tags').includes('roped'))
+    case 'SHOW_ALL':
+      return gyms;
+  }
+}
+
+const filterGymsByLocation = (gyms, location) => {
+  if(location) return gyms.filter(gym => gym.get('location') === location)
+  return gyms;
+}
 
 class Gym extends React.Component {
 
@@ -76,6 +92,11 @@ class Gyms extends React.Component {
   }
 }
 
+const mapStateToProps = ({routes, gyms, locationFilter, gymTypeFilter}) => ({
+  routes,
+  gyms: filterGymsByLocation(filterGymsByType(gyms, gymTypeFilter), locationFilter)
+})
+
 let borderWidth = 2;
 let gymWidth = width/2 - 25;
 let gymHeight = gymWidth * 0.6;
@@ -118,4 +139,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }
 });
-export default connect(({routes, gyms}) => ({routes, gyms}))(Gyms);
+
+export default connect(mapStateToProps)(Gyms);

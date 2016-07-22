@@ -7,24 +7,31 @@ import {
 } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { colours } from './styles/globals';
+import { dispatch } from 'redux';
 
 import Gyms from './screens/gyms';
 import Gym from './screens/gym';
 import GoogleMaps from './screens/googleMaps';
 
-const RouterWithRedux = connect()(Router);
+import { filterCity } from './actions/actions';
 
-const Routes = () => (
-  <RouterWithRedux
+const Routes = ({ dispatch}) => (
+  <Router
     hideNavBar={false}
     titleStyle={styles.title}
     navigationBarStyle={styles.navBar}
     leftButtonIconStyle={styles.leftButton}
   >
-    <Scene key="gyms" title="Gyms" component={Gyms} initial={true}/>
+    <Scene key="gyms"
+      title="Gyms"
+      component={Gyms}
+      initial={true}
+      rightTitle={'City'}
+      onRight={()=> dispatch(filterCity())}
+    />
     <Scene key="gym" component={Gym} />
     <Scene key="googleMaps" component={GoogleMaps} />
-  </RouterWithRedux>
+  </Router>
 );
 
 const styles = StyleSheet.create({
@@ -39,4 +46,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Routes;
+export default connect()(Routes);

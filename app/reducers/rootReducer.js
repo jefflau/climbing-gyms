@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import routes from './routesReducer';
 import gyms from './gymsReducer';
-import gymFilter from './gymFilterReducer';
+import gymTypeFilter from './gymTypeFilterReducer';
+import locationFilter from './locationFilterReducer';
 
 const rootReducer = combineReducers({
   routes,
   gyms,
-  gymFilter
+  gymTypeFilter,
+  locationFilter
 })
 
 export default rootReducer;

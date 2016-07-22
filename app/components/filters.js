@@ -9,10 +9,10 @@ import { connect } from 'react-redux';
 
 class Filters extends React.Component {
   handlePressFilter (type) {
-    let { filterBouldering, filterRoped, filterAll, onFilter, gymFilter } = this.props;
+    let { filterBouldering, filterRoped, filterAll, onFilter, gymTypeFilter } = this.props;
 
     switch(type){
-      case gymFilter:
+      case gymTypeFilter:
         filterAll();
         break;
       case 'SHOW_BOULDERING':
@@ -26,14 +26,14 @@ class Filters extends React.Component {
     onFilter();
   }
   render() {
-    let { filterBouldering, filterRoped, filterAll, onFilter, gymFilter } = this.props;
+    let { filterBouldering, filterRoped, filterAll, onFilter, gymTypeFilter } = this.props;
     return(
       <View style={styles.container}>
-        <TouchableHighlight style={[styles.filter, gymFilter === "SHOW_BOULDERING" ? styles.filterSelected : null]} onPress={this.handlePressFilter.bind(this, 'SHOW_BOULDERING')}>
-          <Text style={[styles.filterText, gymFilter === "SHOW_BOULDERING" ? styles.filterTextSelected : null]}>Bouldering</Text>
+        <TouchableHighlight style={[styles.filter, gymTypeFilter === "SHOW_BOULDERING" ? styles.filterSelected : null]} onPress={this.handlePressFilter.bind(this, 'SHOW_BOULDERING')}>
+          <Text style={[styles.filterText, gymTypeFilter === "SHOW_BOULDERING" ? styles.filterTextSelected : null]}>Bouldering</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={[styles.filter, gymFilter === "SHOW_ROPED" ? styles.filterSelected : null]} onPress={this.handlePressFilter.bind(this, 'SHOW_ROPED')}>
-          <Text style={[styles.filterText, gymFilter === "SHOW_ROPED" ? styles.filterTextSelected : null]}>Roped</Text>
+        <TouchableHighlight style={[styles.filter, gymTypeFilter === "SHOW_ROPED" ? styles.filterSelected : null]} onPress={this.handlePressFilter.bind(this, 'SHOW_ROPED')}>
+          <Text style={[styles.filterText, gymTypeFilter === "SHOW_ROPED" ? styles.filterTextSelected : null]}>Roped</Text>
         </TouchableHighlight>
       </View>
     )
@@ -58,9 +58,9 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-const mapStateToProps = ({gyms, gymFilter}) => ({
+const mapStateToProps = ({gyms, gymTypeFilter}) => ({
   gyms,
-  gymFilter
+  gymTypeFilter
 });
 
 let styles = StyleSheet.create({
