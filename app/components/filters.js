@@ -6,6 +6,7 @@ import {
   StyleSheet
 } from 'react-native';
 import { connect } from 'react-redux';
+import { showBouldering, showRoped, showAll} from '../actions/actions';
 
 class Filters extends React.Component {
   handlePressFilter (type) {
@@ -42,19 +43,13 @@ class Filters extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   filterBouldering(){
-    dispatch({
-      type: 'SHOW_BOULDERING'
-    })
+    dispatch(showBouldering())
   },
-  filterRoped(onFilter){
-    dispatch({
-      type: 'SHOW_ROPED'
-    })
+  filterRoped(){
+    dispatch(showRoped())
   },
-  filterAll(onFilter){
-    dispatch({
-      type: 'SHOW_ALL'
-    })
+  filterAll(){
+    dispatch(showAll())
   }
 })
 

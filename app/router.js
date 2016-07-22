@@ -13,7 +13,7 @@ import Gyms from './screens/gyms';
 import Gym from './screens/gym';
 import GoogleMaps from './screens/googleMaps';
 
-import { filterCity } from './actions/actions';
+import { openCitySelect } from './actions/actions';
 
 const Routes = ({ dispatch}) => (
   <Router
@@ -27,7 +27,7 @@ const Routes = ({ dispatch}) => (
       component={Gyms}
       initial={true}
       rightTitle={'City'}
-      onRight={()=> dispatch(filterCity())}
+      onRight={()=> dispatch(openCitySelect())}
     />
     <Scene key="gym" component={Gym} />
     <Scene key="googleMaps" component={GoogleMaps} />

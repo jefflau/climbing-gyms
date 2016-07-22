@@ -125,4 +125,7 @@ const gymsFixtures = [
   }
 ];
 
+const citiesFixtures = ['hualien', 'taipei'];
+
 export const gyms = Immutable.fromJS(gymsFixtures);
+export const cities = Immutable.fromJS(citiesFixtures);
