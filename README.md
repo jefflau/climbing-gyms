@@ -22,7 +22,8 @@ Alternatively after the `npm install`, open the xcode project in ios > climbTaiw
 
 ###Todo
 
-- [ ] Add map to each Gym using address
-- [ ] Add tab navigation to show gym
-- [ ] Show Information in a more user friendly way
+- [ ] Add Ticket Prices and template
+- [ ] Change Title of gyms.js to whatever city that has been chosen
+- [ ] Add all to type of gym select
+- [ ] Add slider and extra image that users can slide through. (?) Possibly add zoom capabilities
 - [ ] Add Chinese language localisation switch
