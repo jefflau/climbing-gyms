@@ -23,7 +23,7 @@ let days = new LocalizedStrings({
     sun: 'Sunday'
   },
   'zh-Hant': {
-    mon: '週一:',
+    mon: '週一',
     tue: '週二',
     wed: '週三',
     thu: '週四',
