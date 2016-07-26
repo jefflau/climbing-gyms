@@ -217,7 +217,27 @@ const gymsFixtures = [
   }
 ];
 
-const citiesFixtures = ['hualien', 'taipei', 'taichung', 'kaohsiuong', 'yilan'];
+const citiesFixtures = [
+  {
+    id: 'hualien',
+    name: 'Hua Lien'
+  },
+  {
+    id: 'taipei',
+    name: 'Taipei'
+  },
+  {
+    id: 'taichung',
+    name: 'Taichung'
+  },
+  {
+    id: 'kaohsiuong',
+    name: 'Kaohsiong'
+  }, {
+    id: 'yilan',
+    name: 'Yilan'
+  }
+];
 
 export const gyms = Immutable.fromJS(gymsFixtures);
 export const cities = Immutable.fromJS(citiesFixtures);

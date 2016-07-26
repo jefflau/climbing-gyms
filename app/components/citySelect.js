@@ -32,7 +32,7 @@ class CitySelect extends React.Component {
   render() {
     let { cities } = this.props;
     let citySelections = cities.map(city => (
-      <Picker.Item key={city} label={_.capitalize(city)} value={city} />
+      <Picker.Item key={city.get('id')} label={_.capitalize(city.get('name'))} value={city.get('id')} />
     ))
     return (
       <View style={styles.citySelectContainer}>
