@@ -1,5 +1,26 @@
 import Immutable from 'immutable'
 
+const s = new LocalizedStrings({
+  en:{
+    dayPass: 'Weekday Pass',
+    weekendPass: 'Weekend Pass',
+    ticketPack: '30 Ticket Pack',
+    seasonPass: '3 Month Pass',
+    halfYearPass: '6 month Pass',
+    studentPass: 'Student Day Pass',
+    student10Pack: 'Student Ticket Pack (10)'
+  },
+  'zh-Hant': {
+    dayPass: '平日',
+    weekendPass: '假日',
+    ticketPack: '30張套票'，
+    seasonPass: '季卡',
+    halfYearPass: '半年卡',
+    studentPass: '學生票',
+    student10Pack: '10張學生套票'
+  }
+});
+
 const gymsFixtures = [
   {
     name: 'Stone',
