@@ -1,4 +1,5 @@
-import Immutable from 'immutable'
+import Immutable from 'immutable';
+import LocalizedStrings from 'react-native-localization';
 
 const s = new LocalizedStrings({
   en:{
@@ -13,7 +14,7 @@ const s = new LocalizedStrings({
   'zh-Hant': {
     dayPass: '平日',
     weekendPass: '假日',
-    ticketPack: '30張套票'，
+    ticketPack: '30張套票',
     seasonPass: '季卡',
     halfYearPass: '半年卡',
     studentPass: '學生票',
@@ -146,7 +147,7 @@ const gymsFixtures = [
   }
 ];
 
-const citiesFixtures = ['hualien', 'taipei'];
+const citiesFixtures = ['hualien', 'taipei', 'taichung', 'kaohsiuong', 'yilan'];
 
 export const gyms = Immutable.fromJS(gymsFixtures);
 export const cities = Immutable.fromJS(citiesFixtures);
