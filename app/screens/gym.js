@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  MapView
+  ScrollView
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -16,8 +16,16 @@ import { parseOpeningTimes } from '../util/util';
 
 import ViewContainer from '../components/viewContainer';
 import OpeningTimes from '../components/openingTimes';
+import TicketPrices from '../components/ticketPrices';
+import GymMapView from '../components/gymMapView';
 import { colours } from '../styles/globals';
 const { height, width } = Dimensions.get('window');
+
+const statusBarHeight = 64,
+      tabHeight = 40,
+      mainImageHeight = height/3,
+      contentHeight = height/3 * 2 - tabHeight - statusBarHeight,
+      mapHeight = contentHeight;
 
 class Gym extends React.Component{
   constructor(props){
@@ -30,29 +38,21 @@ class Gym extends React.Component{
     let { gym } = this.props;
     let info = this.state.tab === 'info' ?
       (
-        <View>
+        <ScrollView style={styles.infoContainer}>
           <Text style={styles.description}>{gym.get('description')}</Text>
           <OpeningTimes data={gym.get('openingTimes')} />
-        </View>
+          <TicketPrices prices={gym.get('prices')} />
+        </ScrollView>
       )
       : null
 
     let map = this.state.tab === 'map' ?
-      <View style={styles.mapContainer}>
-        <MapView
-          style={styles.map}
-          region={{
-            longitude: gym.getIn(['location', 'longitude']),
-            latitude: gym.getIn(['location', 'latitude']),
-            longitudeDelta: 0.015,
-            latitudeDelta: 0.015
-          }}
-          annotations={[gym.get('location').toObject()]}
-        />
-        <TouchableOpacity style={styles.googleLink} onPress={()=> Actions.googleMaps({address: gym.get('address'), title: "Google Maps"})}>
-          <Text style={styles.googleLinkText}>Link to Google</Text>
-        </TouchableOpacity>
-      </View>
+      <GymMapView
+        location={gym.get('location')}
+        address={gym.get('address')}
+        height={mapHeight}
+        width={width}
+      />
       : null;
     return (
       <ViewContainer style={styles.container}>
@@ -66,7 +66,6 @@ class Gym extends React.Component{
               <Text style={[styles.tabText, this.state.tab ==='map' ? styles.tabTextSelected : '']}>Map</Text>
             </TouchableOpacity>
           </View>
-
           {info}
           {map}
         </View>
@@ -74,10 +73,6 @@ class Gym extends React.Component{
     )
   }
 }
-const statusBarHeight = 64,
-      tabHeight = 40,
-      mainImageHeight = height/3,
-      mapHeight = height/3 * 2 - tabHeight - statusBarHeight;
 
 const styles = StyleSheet.create({
   mainImage: {
@@ -106,6 +101,9 @@ const styles = StyleSheet.create({
   tabTextSelected: {
     color: 'black',
   },
+  infoContainer: {
+    height: contentHeight
+  },
   description: {
     color: 'white',
     padding: 10
@@ -113,24 +111,7 @@ const styles = StyleSheet.create({
   openingTimes: {
     color: 'white',
     padding: 10
-  },
-  map: {
-    height: mapHeight,
-    width: width
-  },
-  mapContainer: {
-
-  },
-  googleLink: {
-    backgroundColor: 'black',
-    padding: 10,
-    position: 'absolute',
-    bottom: 0,
-    right: 0
-  },
-  googleLinkText: {
-    color: 'white'
-  },
+  }
 });
 
 export default connect(({routes}) => ({routes}))(Gym);

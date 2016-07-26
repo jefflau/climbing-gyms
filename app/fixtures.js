@@ -39,6 +39,36 @@ const gymsFixtures = [
     facebook: 'https://www.facebook.com/StoneBoulderingGym/',
     openingTimes: "Mon-Fri:0900-2300,Sat:1100-2100,Sun:1100-1900",
     belayCardRequired: null,
+    prices: [
+      {
+        type: s.dayPass,
+        price: 200,
+      },
+      {
+        type: s.weekendPass,
+        price: 250,
+      },
+      {
+        type: s.ticketPack,
+        price: 4800,
+      },
+      {
+        type: s.seasonPass,
+        price: 3600
+      },
+      {
+        type: s.halfYearPass,
+        price: 6000
+      },
+      {
+        type: s.studentPass,
+        price: 160
+      },
+      {
+        type: s.student10Pack,
+        price: 1400
+      }
+    ]
   },
   {
     name: 'Red Rock',
