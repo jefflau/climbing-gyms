@@ -83,6 +83,16 @@ const gymsFixtures = [
       latitude: 25.08963,
       longitude: 121.52058
     },
+    prices: [
+      {
+        type: s.dayPass,
+        price: 250,
+      },
+      {
+        type: s.studentPass,
+        price: 220
+      }
+    ],
     facebook: 'https://www.facebook.com/redrocktaiwan/?fref=ts',
     openingTimes: 'Mon-Fri:1600-2230,Sat-Sun:0900-2100',
     belayCardRequired: null,
@@ -100,6 +110,12 @@ const gymsFixtures = [
       latitude: 25.03906,
       longitude: 121.52200
     },
+    prices: [
+      {
+        type: s.dayPass,
+        price: 170,
+      }
+    ],
     facebook: 'https://www.facebook.com/groups/212551538862289/',
     openingTimes: 'Mon-Sun:0900-2130',
     openingTimesExtra: 'Sessions split up into 3 periods. 9:00-12:00, 13:30-17:00, 18:00-21:30',
@@ -118,6 +134,12 @@ const gymsFixtures = [
       latitude:25.03187,
       longitude:121.56668
     },
+    prices: [
+      {
+        type: s.dayPass,
+        price: 170,
+      }
+    ],
     openingTimes: 'Mon-Sun:1400-2200',
     openingTimesExtra: 'Closes for an hour from 17:00-18:00',
     facebook: 'https://www.facebook.com/boulderinggym.xinyi/',
@@ -136,6 +158,12 @@ const gymsFixtures = [
       latitude: 25.05392,
       longitude: 121.61385
     },
+    prices: [
+      {
+        type: s.dayPass,
+        price: 200,
+      }
+    ],
     facebook: 'https://www.facebook.com/CivicBouldergymTaipei/',
     openingTimes: 'Mon-Fri:1000-2200,Sat-Sun:1000-1800',
     belayCardRequired: null,
@@ -154,6 +182,12 @@ const gymsFixtures = [
       latitude: 25.07827,
       longitude: 121.57523
     },
+    prices: [
+      {
+        type: s.dayPass,
+        price: 170,
+      }
+    ],
     facebook: 'https://www.facebook.com/climbing.nh/',
     belayCardRequired: true
   },
@@ -172,6 +206,12 @@ const gymsFixtures = [
       latitude: 25.07827,
       longitude: 121.57523
     },
+    prices: [
+      {
+        type: s.dayPass,
+        price: 220,
+      }
+    ],
     facebook: 'https://www.facebook.com/bonushualien/?fref=ts',
     belayCardRequired: null
   }

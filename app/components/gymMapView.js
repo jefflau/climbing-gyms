@@ -7,6 +7,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import { Actions } from 'react-native-router-flux';
+
 const styles = StyleSheet.create({
   googleLink: {
     backgroundColor: 'black',
