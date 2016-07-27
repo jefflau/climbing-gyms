@@ -7,6 +7,7 @@ import {
   Dimensions
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux'
 
 import { filterCity, closeNavPopups } from '../actions/actions';
 
@@ -15,7 +16,6 @@ const { height, width } = Dimensions.get('window');
 class CitySelect extends React.Component {
   constructor(props){
     super(props)
-    console.log(props);
     this.state = {
       selected: props.locationFilter
     }
@@ -25,8 +25,11 @@ class CitySelect extends React.Component {
     newState[key] = value;
     this.setState(newState, ()=>{
       this.props.dispatch(filterCity(value));
-      this.props.dispatch(closeNavPopups())
+      this.props.dispatch(closeNavPopups());
       this.props.filterAnimationSetup();
+      Actions.refresh({
+        title: _.capitalize(value) + " gyms"
+      })
     });
   }
   render() {

@@ -23,7 +23,7 @@ const Routes = ({ dispatch}) => (
     leftButtonIconStyle={styles.leftButton}
   >
     <Scene key="gyms"
-      title="Gyms"
+      title="All Gyms"
       component={Gyms}
       initial={true}
       rightTitle={'City'}

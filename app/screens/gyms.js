@@ -62,7 +62,6 @@ class Gyms extends React.Component {
   }
 
   citySelect(navPopup, cities){
-    console.log('select city', this.props)
     if(navPopup === 'TOGGLE_CITY_SELECT') {
       return <CitySelect filterAnimationSetup={this.filterAnimationSetup} cities={cities} locationFilter={this.props.locationFilter}/>
     } else {
