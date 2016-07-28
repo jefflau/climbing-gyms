@@ -82,6 +82,7 @@ const OpeningTimes = ({ data }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.header}>Opening Times</Text>
       {times}
     </View>
   );
@@ -91,8 +92,14 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
   },
+  header: {
+    color: 'white',
+    paddingBottom: 20,
+    fontSize: 20,
+  },
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: 5,
   },
   day: {
     flex: 1,

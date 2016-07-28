@@ -39,12 +39,19 @@ const Gym = ({ gym, goToGym }) =>  (
 class Gyms extends React.Component {
   constructor(props){
     super(props);
-
+    this.state = {
+      dataSource: ds.cloneWithRows(props.gyms.toArray())
+    }
   }
 
   componentWillMount() {
     // Animate creation
     LayoutAnimation.spring();
+  }
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      dataSource: ds.cloneWithRows(nextProps.gyms.toArray())
+    })
   }
 
   goToGym(gym){
@@ -71,11 +78,17 @@ class Gyms extends React.Component {
 
   render(){
     let { navPopup, gyms, cities } = this.props;
+    console.log(gyms.toArray())
     return (
       <ViewContainer>
         <Filters filterAnimationSetup={this.filterAnimationSetup}>
         </Filters>
-         <ListView contentContainerStyle={styles.gymContainer} dataSource={ds.cloneWithRows(gyms.toArray())} renderRow={this.renderGym.bind(this)} />
+        <ListView
+           style={{flex: 1}}
+           contentContainerStyle={styles.gymContainer} dataSource={this.state.dataSource} renderRow={this.renderGym.bind(this)}
+           enableEmptySections={true}
+
+          />
          {this.citySelect(navPopup, cities)}
       </ViewContainer>
     )
@@ -129,7 +142,6 @@ let gymImageHeight = gymHeight - borderWidth*2;
 
 const styles = StyleSheet.create({
   gymContainer: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     padding: 7,

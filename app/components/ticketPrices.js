@@ -12,12 +12,12 @@ class TicketPrices extends React.Component {
     let showPrices = prices.map((item, i) => (
         <View key={i} style={styles.priceItem}>
           <Text style={styles.type}>{item.get('type')}</Text>
-          <Text style={styles.price}>{item.get('price')}</Text>
+          <Text style={styles.price}>${item.get('price')} NTD</Text>
         </View>
       )
     )
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.header}>Entry Prices</Text>
         {showPrices}
       </View>
@@ -26,19 +26,25 @@ class TicketPrices extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    padding: 10
+  },
   header: {
     color: 'white',
-    padding: 10,
+    paddingBottom: 20,
     fontSize: 20
   },
   priceItem: {
-    padding: 10,
+    marginBottom: 5,
+    flexDirection: 'row'
   },
   type: {
     color: 'white',
+    flex: 1
   },
   price: {
     color: 'white',
+    flex: 1
   }
 })
 
