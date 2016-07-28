@@ -27,6 +27,8 @@ const statusBarHeight = 64,
       contentHeight = height/3 * 2 - tabHeight - statusBarHeight,
       mapHeight = contentHeight;
 
+const Credit = ({credits}) => ( credits ? <Text style={styles.credit}>{credits}</Text> : null);
+
 class Gym extends React.Component{
   constructor(props){
     super()
@@ -42,6 +44,7 @@ class Gym extends React.Component{
           <Text style={styles.description}>{gym.get('description')}</Text>
           <OpeningTimes data={gym.get('openingTimes')} />
           <TicketPrices prices={gym.get('prices')} />
+          <Credit credits={gym.get('credits')}/>
         </ScrollView>
       )
       : null
@@ -109,6 +112,10 @@ const styles = StyleSheet.create({
     padding: 10
   },
   openingTimes: {
+    color: 'white',
+    padding: 10
+  },
+  credit: {
     color: 'white',
     padding: 10
   }

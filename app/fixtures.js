@@ -230,7 +230,8 @@ const gymsFixtures = [
       }
     ],
     facebook: '',
-    belayCardRequired: true
+    belayCardRequired: true,
+    credits: "Image credit to Taiwanrocks.net"
   },
   {
     name: 'iClimb 風城',
@@ -252,7 +253,8 @@ const gymsFixtures = [
       }
     ],
     facebook: 'https://www.facebook.com/iclimb/',
-    belayCardRequired: true
+    belayCardRequired: true,
+    credits: "Image credit to Taiwanrocks.net"
   },
   {
     name: 'TGG 頂瓜瓜',
@@ -279,7 +281,8 @@ const gymsFixtures = [
       }
     ],
     facebook: 'https://www.facebook.com/TBG0802?fref=ts',
-    belayCardRequired: null
+    belayCardRequired: null,
+    credits: "Image credit to Taiwanrocks.net"
   },
   {
     name: 'Da Vinci',
@@ -301,7 +304,8 @@ const gymsFixtures = [
       }
     ],
     facebook: 'https://www.facebook.com/davinci.climbing/',
-    belayCardRequired: true
+    belayCardRequired: true,
+    credits: "Image credit to Taiwanrocks.net"
   },
   {
     name: 'Wanhua',
@@ -323,7 +327,8 @@ const gymsFixtures = [
       }
     ],
     facebook: 'https://www.facebook.com/ecopower.wanhua/',
-    belayCardRequired: true
+    belayCardRequired: true,
+    credits: "Image credit to Taiwanrocks.net"
   },
   {
     name: 'B-Plus',
@@ -353,7 +358,8 @@ const gymsFixtures = [
       }
     ],
     facebook: 'https://www.facebook.com/bplusbouldering',
-    belayCardRequired: null
+    belayCardRequired: null,
+    credits: "Image credit to Taiwanrocks.net"
   },
   {
     name: 'Wenshan 文山',
@@ -379,7 +385,8 @@ const gymsFixtures = [
       }
     ],
     facebook: '',
-    belayCardRequired: true
+    belayCardRequired: true,
+    credits: "Image credit to Taiwanrocks.net"
   },
   {
     name: 'YOY 歪仔歪',
@@ -402,7 +409,8 @@ const gymsFixtures = [
       }
     ],
     facebook: 'https://www.facebook.com/YOY-%E6%AD%AA%E4%BB%94%E6%AD%AA%E6%94%80%E5%B2%A9%E9%A4%A8-229618914925/?fref=ts',
-    belayCardRequired: null
+    belayCardRequired: null,
+    credits: "Image credit to Taiwanrocks.net"
   },
 ];
 
