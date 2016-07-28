@@ -23,7 +23,6 @@ Alternatively after the `npm install`, open the xcode project in ios > climbTaiw
 ###Todo
 
 - [ ] Add Ticket Prices and template
-- [ ] Add all to type of gym select
 - [ ] Add slider and extra image that users can slide through. (?) Possibly add zoom capabilities
 - [ ] Add Chinese language localisation switch
 - [ ] Change fixtures.js to an API
