@@ -239,5 +239,7 @@ const citiesFixtures = [
   }
 ];
 
-export const gyms = Immutable.fromJS(gymsFixtures);
-export const cities = Immutable.fromJS(citiesFixtures);
+const gyms = Immutable.fromJS(gymsFixtures);
+const cities = Immutable.fromJS(citiesFixtures);
+
+export { gyms, cities };

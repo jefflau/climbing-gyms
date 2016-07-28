@@ -14,6 +14,7 @@ class Filters extends React.Component {
 
     switch(type){
       case gymTypeFilter:
+      case 'SHOW_ALL':
         filterAll();
         break;
       case 'SHOW_BOULDERING':
@@ -30,6 +31,9 @@ class Filters extends React.Component {
     let { filterBouldering, filterRoped, filterAll, onFilter, gymTypeFilter } = this.props;
     return(
       <View style={styles.container}>
+        <TouchableHighlight style={[styles.filter, gymTypeFilter === "SHOW_ALL" ? styles.filterSelected : null]} onPress={this.handlePressFilter.bind(this, 'SHOW_ALL')}>
+          <Text style={[styles.filterText, gymTypeFilter === "SHOW_ALL" ? styles.filterTextSelected : null]}>All</Text>
+        </TouchableHighlight>
         <TouchableHighlight style={[styles.filter, gymTypeFilter === "SHOW_BOULDERING" ? styles.filterSelected : null]} onPress={this.handlePressFilter.bind(this, 'SHOW_BOULDERING')}>
           <Text style={[styles.filterText, gymTypeFilter === "SHOW_BOULDERING" ? styles.filterTextSelected : null]}>Bouldering</Text>
         </TouchableHighlight>
