@@ -212,7 +212,7 @@ const gymsFixtures = [
   },
   {
     name: 'Danshui',
-    slug: 'danshui-sportcenter',
+    slug: 'danshui',
     tags: ['top roping', 'roped', 'lead'],
     rent: ['shoes', 'harness'],
     openingTimes: 'Mon-Sun:0900-2200',
@@ -235,7 +235,7 @@ const gymsFixtures = [
   },
   {
     name: 'iClimb 風城',
-    slug: 'iClimb',
+    slug: 'iclimb',
     tags: ['top roping', 'roped', 'lead', 'bouldering'],
     rent: ['shoes', 'harness'],
     openingTimes: 'Mon-Fri:1000-2230,Sat-Sun:0900-2100',
@@ -412,6 +412,74 @@ const gymsFixtures = [
     belayCardRequired: null,
     credits: "Image credit to Taiwanrocks.net"
   },
+  {
+    name: 'Nangang',
+    slug: 'nangang',
+    tags: ['top roping', 'roped', 'lead'],
+    openingTimes: 'Mon-Sun:0600-2200',
+    description: "Super cheap climbing, but no staff to check safety",
+    address: '台北市興隆路3段222號',
+    city: 'taipei',
+    location: {
+      latitude: 24.99702,
+      longitude: 121.55967
+    },
+    prices: [
+      {
+        type: s.dayPass,
+        price: 50,
+      },
+
+    ],
+    facebook: '',
+    belayCardRequired: false,
+    credits: "Image credit to Taiwanrocks.net"
+  },
+  {
+    name: 'Chiayi',
+    slug: 'chiayi',
+    tags: ['bouldering'],
+    openingTimes: 'Tue:1600-0000,Thu:1600-0000',
+    description: "Super cheap climbing, but no staff to check safety",
+    address: '嘉義鐵道藝術村二號倉',
+    city: 'chiayi',
+    location: {
+      latitude: 23.481312,
+      longitude: 120.441573
+    },
+    prices: [
+      {
+        type: s.dayPass,
+        price: 'free',
+      }
+    ],
+    facebook: 'https://www.facebook.com/groups/cysca',
+    belayCardRequired: false,
+    credits: "Image credit to Taiwanrocks.net"
+  },
+  {
+    name: 'Shoushan 壽山',
+    slug: 'shoushan',
+    tags: ['roped', 'lead', 'bouldering'],
+    rent: ['shoes', 'harness'],
+    openingTimes: 'Mon-Fri:1830-0000,Sat-Sun:0900-0000',
+    description: "One of the largest gyms in Taiwan with 16m high walls, autobelay and also a small bouldering section with a lot of ceiling",
+    address: '台灣高雄市鼓山區鼓山二路37巷壽山國中',
+    city: 'kaohsiuong',
+    location: {
+      latitude: 22.633833,
+      longitude: 120.278454
+    },
+    prices: [
+      {
+        type: s.dayPass,
+        price: 100,
+      }
+    ],
+    facebook: 'https://www.facebook.com/iclimb/',
+    belayCardRequired: true,
+    credits: "Image credit to Taiwanrocks.net"
+  },
 ];
 
 const citiesFixtures = [
@@ -441,6 +509,10 @@ const citiesFixtures = [
   {
     id: 'hsinchu',
     name: 'Hsinchu'
+  },
+  {
+    id: 'chiayi',
+    name: 'Chiayi'
   }
 ];
 

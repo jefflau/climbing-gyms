@@ -6,13 +6,20 @@ import {
 } from 'react-native';
 
 class TicketPrices extends React.Component {
+  formatPrice(price){
+    if(typeof price === 'number'){
+      return `$${price} NTD`
+    } else {
+      return price;
+    }
+  }
   render() {
     let { prices } = this.props;
 
     let showPrices = prices.map((item, i) => (
         <View key={i} style={styles.priceItem}>
           <Text style={styles.type}>{item.get('type')}</Text>
-          <Text style={styles.price}>${item.get('price')} NTD</Text>
+          <Text style={styles.price}>{this.formatPrice(item.get('price'))}</Text>
         </View>
       )
     )
